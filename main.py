@@ -1,4 +1,5 @@
 import streamlit as st
+import toml
 import qrcode
 from io import BytesIO
 
