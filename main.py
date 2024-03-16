@@ -2,7 +2,11 @@ import streamlit as st
 import toml
 import qrcode
 from io import BytesIO
+styles = load_styles("styles.toml")
 
+# Apply styles
+background_color = styles["colors"]["background_color"]
+st.markdown(f'<style>body{{background-color: {background_color};}}</style>', unsafe_allow_html=True)
 
 class MetroStation:
     def __init__(self, name):
