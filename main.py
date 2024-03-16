@@ -60,8 +60,9 @@ class MetroNetwork:
 metro = MetroNetwork()
 
 # Add stations for the Purple Line
-purple_line_stations = ['Mysore Road', 'Deepanjali Nagar', 'Attiguppe', 'Vijayanagar', 'Magadi Road', 'Hosahalli',
-                        'Nayandahalli', 'Peenya Industry', 'Peenya']
+purple_line_stations = ['Mysore Road', 'Deepanjali Nagar', 'Attiguppe', 'Vijayanagar', 'Magadi Road', 'City Rly Stn',
+                        'Majestic', 'Sir M.Vishveshwaraih', 'Vidhana Soudha','Cubbon Park','MG Road','Trinity','Halasuru',
+                        'Indiriranagar','Swami Vivekananda Rd','Baiyyapanahalli']
 
 for station in purple_line_stations:
     metro.add_station(station)
@@ -72,11 +73,19 @@ purple_line_connections = [
     ('Deepanjali Nagar', 'Attiguppe', 3, 5),
     ('Deepanjali Nagar', 'Vijayanagar', 4, 8),
     ('Vijayanagar', 'Magadi Road', 3, 6),
-    ('Magadi Road', 'Hosahalli', 2, 4),
-    ('Hosahalli', 'Nayandahalli', 3, 6),
-    ('Nayandahalli', 'Peenya Industry', 4, 8),
-    ('Peenya Industry', 'Peenya', 3, 6),
+    ('Magadi Road', 'City Rly Stn', 2, 4),
+    ('City Rly Stn', 'Majestic', 3, 6),
+    ('Majestic', 'Sir M.Vishveshwaraih', 4, 8),
+    ('Sir M.Vishveshwaraih', 'Vidhana Soudha', 3, 6),
+    ('Vidhana Soudha','Cubbon Park',3,6),
+    ('Cubbon Park','MG Road',4,8),
+    ('MG Road','Trinity',3,6),
+    ('Trinity','Halasuru',5,10),
+    ('Halasuru','Indiriranagar',4,8),
+    ('Indiriranagar','Swami Vivekananda Rd',3,6),
+    ('Swami Vivekananda Rd','Baiyyapanahalli',4,8),
 ]
+
 
 for connection in purple_line_connections:
     metro.add_connection(*connection)
@@ -86,7 +95,7 @@ green_line_stations = ['Nagasandra', 'Dasarahalli', 'Jalahalli', 'Peenya Industr
                        'Yeshwantpur', 'Sandal Soap Factory', 'Mahalakshmi', 'Rajajinagar', 'Kuvempu Road',
                        'Srirampura', 'Sampige Road', 'Majestic', 'Chickpete', 'K R Market',
                        'National College', 'Lalbagh', 'South End Circle', 'Jayanagar', 'R V Road Interchange',
-                       'Banashankari', 'JP Nagar', 'Puttenahalli', 'Anjanapura Cross Road']
+                       'Banashankari', 'JP Nagar', 'Yelechenahalli']
 
 for station in green_line_stations:
     metro.add_station(station)
@@ -115,8 +124,7 @@ green_line_connections = [
     ('Jayanagar', 'R V Road Interchange', 2, 5),
     ('R V Road Interchange', 'Banashankari', 3, 5),
     ('Banashankari', 'JP Nagar', 3, 5),
-    ('JP Nagar', 'Puttenahalli', 3, 5),
-    ('Puttenahalli', 'Anjanapura Cross Road', 2, 5),
+    ('JP Nagar', 'Yelechenahalli', 3, 5),
 ]
 
 for connection in green_line_connections:
