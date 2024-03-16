@@ -1,3 +1,7 @@
 [theme]
 base="light"
 font="serif"
+[style]
+body{
+background-color="#BF40BF"
+}
