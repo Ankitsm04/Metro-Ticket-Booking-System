@@ -2,11 +2,7 @@ import streamlit as st
 import toml
 import qrcode
 from io import BytesIO
-styles = load_styles("styles.toml")
 
-# Apply styles
-background_color = styles["colors"]["background_color"]
-st.markdown(f'<style>body{{background-color: {background_color};}}</style>', unsafe_allow_html=True)
 
 class MetroStation:
     def __init__(self, name):
@@ -171,3 +167,9 @@ if st.button('Calculate Fare and Distance'):
             st.error('No route found. Please select valid source and destination stations.')
     else:
         st.warning('Please select both source and destination stations.')
+
+styles = load_styles("styles.toml")
+
+# Apply styles
+background_color = styles["colors"]["background_color"]
+st.markdown(f'<style>body{{background-color: {background_color};}}</style>', unsafe_allow_html=True)
