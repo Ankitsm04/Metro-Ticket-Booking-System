@@ -175,13 +175,3 @@ if st.button('Calculate Fare and Distance'):
     else:
         st.warning('Please select both source and destination stations.')
 
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #ffffff;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
