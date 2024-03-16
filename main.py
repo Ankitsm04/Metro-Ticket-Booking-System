@@ -1,5 +1,4 @@
 import streamlit as st
-import toml
 import qrcode
 from io import BytesIO
 
@@ -168,11 +167,13 @@ if st.button('Calculate Fare and Distance'):
     else:
         st.warning('Please select both source and destination stations.')
 
-with open("styles.toml", "r") as f:
-    styles = toml.load(f)
-
-# Extract background color from loaded styles
-background_color = styles["colors"]["background_color"]
-
-# Apply styles
-st.markdown(f'<style>body{{background-color: {background_color};}}</style>', unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #BF65FC;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
