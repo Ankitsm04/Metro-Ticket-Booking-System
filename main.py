@@ -84,7 +84,7 @@ for connection in purple_line_connections:
 # Add stations for the Green Line
 green_line_stations = ['Nagasandra', 'Dasarahalli', 'Jalahalli', 'Peenya Industry', 'Peenya', 'Goraguntepalya',
                        'Yeshwantpur', 'Sandal Soap Factory', 'Mahalakshmi', 'Rajajinagar', 'Kuvempu Road',
-                       'Srirampura', 'Sampige Road', 'Kempegowda Interchange', 'Chickpete', 'K R Market',
+                       'Srirampura', 'Sampige Road', 'Majestic', 'Chickpete', 'K R Market',
                        'National College', 'Lalbagh', 'South End Circle', 'Jayanagar', 'R V Road Interchange',
                        'Banashankari', 'JP Nagar', 'Puttenahalli', 'Anjanapura Cross Road']
 
@@ -105,8 +105,8 @@ green_line_connections = [
     ('Rajajinagar', 'Kuvempu Road', 2, 5),
     ('Kuvempu Road', 'Srirampura', 2, 5),
     ('Srirampura', 'Sampige Road', 2, 5),
-    ('Sampige Road', 'Kempegowda Interchange', 3, 5),
-    ('Kempegowda Interchange', 'Chickpete', 3, 5),
+    ('Sampige Road', 'Majestic', 3, 5),
+    ('Majestic', 'Chickpete', 3, 5),
     ('Chickpete', 'K R Market', 2, 5),
     ('K R Market', 'National College', 2, 5),
     ('National College', 'Lalbagh', 2, 5),
