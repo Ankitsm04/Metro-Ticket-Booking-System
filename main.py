@@ -1,7 +1,10 @@
 import streamlit as st
 import qrcode
 from io import BytesIO
+from heapq import heappush, heappop
 
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 class MetroStation:
     def __init__(self, name):
@@ -29,32 +32,36 @@ class MetroNetwork:
     def calculate_fare_and_distance(self, source, destination):
         if source == destination:
             return "Same Station selected", None, None
-        route = self.find_route(source, destination)
-        if route:
+        fare, path = self.find_shortest_path(source, destination)
+        if fare is not None and path is not None:
             total_distance = sum(
-                self.stations[route[i]].connections[route[i + 1]]['distance'] for i in range(len(route) - 1))
-            total_fare = sum(
-                self.stations[route[i]].connections[route[i + 1]]['fare'] for i in range(len(route) - 1))
-            return total_fare, total_distance, route
+                self.stations[path[i]].connections[path[i + 1]]['distance'] for i in range(len(path) - 1))
+            return fare, total_distance, path
         else:
             return None, None, None
 
-    def find_route(self, start_station, end_station):
-        visited = set()
-        queue = [[start_station]]
+    def find_shortest_path(self, start_station, end_station):
+        priority_queue = [(0, start_station)]  # Tuple: (fare, station)
+        shortest_fares = {station: float('inf') for station in self.stations}
+        shortest_fares[start_station] = 0
+        previous_station = {station: None for station in self.stations}
 
-        while queue:
-            path = queue.pop(0)
-            node = path[-1]
-            if node == end_station:
-                return path
-            if node not in visited:
-                for neighbor in self.stations[node].connections.keys():
-                    new_path = list(path)
-                    new_path.append(neighbor)
-                    queue.append(new_path)
-            visited.add(node)
-        return None
+        while priority_queue:
+            current_fare, current_station = heappop(priority_queue)
+            if current_station == end_station:
+                path = []
+                while current_station is not None:
+                    path.append(current_station)
+                    current_station = previous_station[current_station]
+                return current_fare, path[::-1]  # Reverse the path to get it from start to end
+            for neighbor, edge_info in self.stations[current_station].connections.items():
+                fare_to_neighbor = current_fare + edge_info['fare']
+                if fare_to_neighbor < shortest_fares[neighbor]:
+                    shortest_fares[neighbor] = fare_to_neighbor
+                    previous_station[neighbor] = current_station
+                    heappush(priority_queue, (fare_to_neighbor, neighbor))
+
+        return None, None  # No path found
 
 
 metro = MetroNetwork()
